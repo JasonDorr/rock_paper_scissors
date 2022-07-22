@@ -26,20 +26,14 @@ function getPlayerChoice() {
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return console.log("Tie!");
-  }
-
-  if (playerSelection == "Rock" && computerSelection == "Scissors") {
+  } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+    return winner(playerSelection, computerSelection);
+  } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+    return winner(playerSelection, computerSelection);
+  } else if (playerSelection == "Scissors" && computerSelection == "paper") {
     return winner(playerSelection, computerSelection);
   } else {
     loser(playerSelection, computerSelection);
-  }
-
-  if (playerSelection == "Paper" && computerSelection == "Rock") {
-    return winner(playerSelection, computerSelection);
-  }
-
-  if (playerSelection == "Scissors" && computerSelection == "paper") {
-    return winner(playerSelection, computerSelection);
   }
 }
 
