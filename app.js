@@ -15,7 +15,6 @@ function getComputerChoice() {
     return "Scissors";
   }
 }
-// console.log(`Computer Chose: ${getComputerChoice()}`);
 
 function getPlayerChoice() {
   let choice = prompt('Please select "Rock, Paper, or Scissors"');
@@ -35,23 +34,6 @@ function getPlayerChoice() {
     return correctChoice;
   }
 }
-
-// let newChoice = getPlayerChoice();
-
-// function tryAgain() {
-//   let choice = prompt("Unusable entry. Please try again");
-//   let lower = choice.toLowerCase();
-//   let cap = lower[0].toUpperCase();
-//   let correctChoice = lower.replace(lower[0], cap);
-//   return correctChoice;
-// }
-// if (newChoice == "Rock" || newChoice == "Paper" || newChoice == "Scissors") {
-//   console.log(`You chose: ${newChoice}`);
-// } else {
-//   let newChoice = tryAgain();
-//   console.log(`You chose: ${newChoice}`);
-// }
-//   return correctChoice;
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
@@ -76,8 +58,6 @@ function loser(playerSelection, computerSelection) {
   console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
   computerScore++;
 }
-
-// playRound();
 
 while (computerScore < 5 && playerScore != 5 && gameCount != 10) {
   playRound(getPlayerChoice(), getComputerChoice());
