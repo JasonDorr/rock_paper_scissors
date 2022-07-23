@@ -1,3 +1,7 @@
+let playerScore = 0;
+let computerScore = 0;
+let gameCount = 0;
+
 function getComputerChoice() {
   let num = Math.floor(Math.random() * 3) + 1;
   if (num === 1) {
@@ -15,13 +19,39 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
   let choice = prompt('Please select "Rock, Paper, or Scissors"');
-  choice.toString();
   let lower = choice.toLowerCase();
-  let cap = lower[0].toUpperCase();
-  let newChoice = lower.replace(lower[0], cap);
-  console.log(`You chose: ${newChoice}`);
-  return newChoice;
+
+  if (choice == "rock" || choice == "paper" || choice == "scissors") {
+    let cap = lower[0].toUpperCase();
+    let newChoice = lower.replace(lower[0], cap);
+    return newChoice;
+  } else if (choice != "rock" && choice != "paper" && choice != "scissors") {
+    let choice = prompt(
+      'Invalid value! Please select "Rock, Paper, or Scissors"'
+    );
+    let lower = choice.toLowerCase();
+    let cap = lower[0].toUpperCase();
+    let correctChoice = lower.replace(lower[0], cap);
+    return correctChoice;
+  }
 }
+
+// let newChoice = getPlayerChoice();
+
+// function tryAgain() {
+//   let choice = prompt("Unusable entry. Please try again");
+//   let lower = choice.toLowerCase();
+//   let cap = lower[0].toUpperCase();
+//   let correctChoice = lower.replace(lower[0], cap);
+//   return correctChoice;
+// }
+// if (newChoice == "Rock" || newChoice == "Paper" || newChoice == "Scissors") {
+//   console.log(`You chose: ${newChoice}`);
+// } else {
+//   let newChoice = tryAgain();
+//   console.log(`You chose: ${newChoice}`);
+// }
+//   return correctChoice;
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
@@ -39,10 +69,30 @@ function playRound(playerSelection, computerSelection) {
 
 function winner(playerSelection, computerSelection) {
   console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+  playerScore++;
 }
 
 function loser(playerSelection, computerSelection) {
   console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
+  computerScore++;
 }
 
-playRound(getPlayerChoice(), getComputerChoice());
+// playRound();
+
+while (computerScore < 5 && playerScore != 5 && gameCount != 10) {
+  playRound(getPlayerChoice(), getComputerChoice());
+  gameCount++;
+  console.log(
+    `Player: ${playerScore}, Computer: ${computerScore}, Game: ${gameCount}`
+  );
+}
+
+if (playerScore === 5) {
+  alert("You Win");
+} else if (computerScore === 5) {
+  alert("You Lose");
+} else if (gameCount === 10 && playerScore > computerScore) {
+  alert("You Win");
+} else if (gameCount === 10 && computerScore > playerScore) {
+  alert("You Lose");
+}
