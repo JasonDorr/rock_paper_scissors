@@ -28,7 +28,7 @@ function getPlayerChoice() {
   });
 }
 
-function playRound(playerSelection, computerSelection) {
+const playRound = (playerSelection, computerSelection) => {
   if (playerSelection === computerSelection) {
     return console.log("Tie!");
   } else if (playerSelection == "rock" && computerSelection == "Scissors") {
@@ -40,17 +40,25 @@ function playRound(playerSelection, computerSelection) {
   } else {
     loser(playerSelection, computerSelection);
   }
-}
+};
 
-function winner(playerSelection, computerSelection) {
+const winner = (playerSelection, computerSelection) => {
   console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
   playerScore++;
-}
+};
 
-function loser(playerSelection, computerSelection) {
+const loser = (playerSelection, computerSelection) => {
   console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
   computerScore++;
-}
+};
+// const game = () => {
+//   while (computerScore < 5 && playerScore != 5 && gameCount != 10) {
+//     playRound(getPlayerChoice(), getComputerChoice());
+//     gameCount++;
+//     console.log(
+//       `Player: ${playerScore}, Computer: ${computerScore}, Game: ${gameCount}`
+//     );
+//   }
 
 // playRound();
 
