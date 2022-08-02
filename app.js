@@ -1,6 +1,9 @@
 let playerScore = 0;
 let computerScore = 0;
 let gameCount = 0;
+const buttons = document.querySelectorAll("button");
+const result = document.querySelector("#result");
+const playerChoice = document.querySelector("#playerchoice");
 
 function getComputerChoice() {
   let num = Math.floor(Math.random() * 3) + 1;
@@ -17,32 +20,22 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-  let choice = prompt('Please select "Rock, Paper, or Scissors"');
-  let lower = choice.toLowerCase();
-
-  if (choice == "rock" || choice == "paper" || choice == "scissors") {
-    let cap = lower[0].toUpperCase();
-    let newChoice = lower.replace(lower[0], cap);
-    return newChoice;
-  } else if (choice != "rock" && choice != "paper" && choice != "scissors") {
-    let choice = prompt(
-      'Invalid value! Please select "Rock, Paper, or Scissors"'
-    );
-    let lower = choice.toLowerCase();
-    let cap = lower[0].toUpperCase();
-    let correctChoice = lower.replace(lower[0], cap);
-    return correctChoice;
-  }
+  buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const playerSelection = e.target.dispatchEvent;
+      return playerSelection;
+    });
+  });
 }
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return console.log("Tie!");
-  } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+  } else if (playerSelection == "rock" && computerSelection == "Scissors") {
     return winner(playerSelection, computerSelection);
-  } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+  } else if (playerSelection == "paper" && computerSelection == "Rock") {
     return winner(playerSelection, computerSelection);
-  } else if (playerSelection == "Scissors" && computerSelection == "paper") {
+  } else if (playerSelection == "scissors" && computerSelection == "Paper") {
     return winner(playerSelection, computerSelection);
   } else {
     loser(playerSelection, computerSelection);
@@ -59,20 +52,22 @@ function loser(playerSelection, computerSelection) {
   computerScore++;
 }
 
-while (computerScore < 5 && playerScore != 5 && gameCount != 10) {
-  playRound(getPlayerChoice(), getComputerChoice());
-  gameCount++;
-  console.log(
-    `Player: ${playerScore}, Computer: ${computerScore}, Game: ${gameCount}`
-  );
-}
+// playRound();
 
-if (playerScore === 5) {
-  alert("You Win");
-} else if (computerScore === 5) {
-  alert("You Lose");
-} else if (gameCount === 10 && playerScore > computerScore) {
-  alert("You Win");
-} else if (gameCount === 10 && computerScore > playerScore) {
-  alert("You Lose");
-}
+// while (computerScore < 5 && playerScore != 5 && gameCount != 10) {
+//   playRound(getPlayerChoice(), getComputerChoice());
+//   gameCount++;
+//   console.log(
+//     `Player: ${playerScore}, Computer: ${computerScore}, Game: ${gameCount}`
+//   );
+// }
+
+// if (playerScore === 5) {
+//   alert("You Win");
+// } else if (computerScore === 5) {
+//   alert("You Lose");
+// } else if (gameCount === 10 && playerScore > computerScore) {
+//   alert("You Win");
+// } else if (gameCount === 10 && computerScore > playerScore) {
+//   alert("You Lose");
+// }
